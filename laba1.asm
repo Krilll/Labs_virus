@@ -15,7 +15,6 @@ section .text
 global CMAIN
 
 CMAIN:
-
 mov edi, STACK_DATA_PTR
 jmp _input_loop
 
@@ -24,6 +23,7 @@ GET_CHAR al
 cmp al, STOP_SYMBOL
 je _pop_loop
 jmp _push
+
 _push:
 mov [edi], al
 inc edi
@@ -39,6 +39,7 @@ dec byte STACK_SIZE
 cmp edi, STACK_DATA_PTR
 jne _pop_loop
 Ret
+
 _error:
 PRINT_STRING "stackoverflow"
 NEWLINE
